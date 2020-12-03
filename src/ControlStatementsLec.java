@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ControlStatementsLec {
 
     public static void main(String[] args){
@@ -7,9 +9,12 @@ public class ControlStatementsLec {
         // no >== ,or <==, or === because only value comparisons are available
         // truthy and falsy values don't exist in Java
 
+
+//        TRUE
 //        int randomNumber = 6;
 //        System.out.println(randomNumber == 6);
 
+//        FALSE
 //        char randomChar = 'Y';
 //        System.out.println(randomChar == 'y');
 
@@ -39,8 +44,8 @@ public class ControlStatementsLec {
         // DO NOT COMPARE STRINGS WITH == !!!!
 
 //                Scanner sc = new Scanner(System.in);
-//                String cat1 = sc.nextLine();
-//                String cat2 = "cat";
+//                String cat1, cat2;
+//                cat1 = cat2 = sc.nextLine();
 //                System.out.println(cat1);
 //                System.out.println(cat2);
 //                System.out.println(cat1 == cat2);
