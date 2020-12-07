@@ -2,59 +2,99 @@ import java.util.Scanner;
 
 public class MethodsExercises {
 
-    public static void add(int a, int b){
-        int c = a + b;
-        System.out.printf("%d + %d = %d%n", a, b, c);
+    public static double add(double a, double b){
+        return a + b;
     }
 
-    public static void subtract(int a, int b){
-        int c = a - b;
-        System.out.printf("%d - %d = %d%n", a, b, c);
+    public static double subtract(double a, double b){
+        return a - b;
     }
 
-    public static void multiply(int a, int b){
-        int c = 0;
-        for(int i = 1; i <= b; i++){
-            c += a;
+    public static double multiply(double a, double b){
+        return a * b;
+    }
+
+    public static double divide(double a, double b){
+        return a / b;
+    }
+
+    public static double modulus(double a, double b){
+        return a % b;
+    }
+
+    public static double multiplyWithLoop(double a, double b){
+        double total = 0;
+        for (int i = 0; i < b; i += 1){
+            total += a;
         }
-        System.out.printf("%d * %d = %d%n", a, b, c);
+        return total;
     }
 
-
-    public static int mult(int a, int b){
-        if(b <= 1){
-            return a;
+    public static double multiplyRecursion(double a, double b, double c){
+        if (b > 0) {
+            return multiplyRecursion(a, b - 1, c + a);
         } else {
-            return a + mult(a, b -1);
+            return c;
         }
     }
 
-    public static void divide(int a, int b){
-        if(a == 0 || b == 0){
-            int c = 0;
-            System.out.printf("%d / %d = %d%n", a, b, c);
-        } else if (a < b){
-            float d = (float) a;
-            float e = (float) b;
-            float c = d / e;
-            System.out.printf("%.0f / %.0f = %.2f%n", d, e, c);
+    public static int getInteger(int min, int max) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) {
+            System.out.println("Not a number!");
+            return getInteger(min, max);
+        }
+        int userInput = sc.nextInt();
+        if (userInput >= min && userInput <= max) {
+            return userInput;
         } else {
-            int c = a / b;
-            System.out.printf("%d / %d = %d%n", a, b, c);
+            System.out.println("Number not in range!");
+            return getInteger(min, max);
         }
     }
 
-    public static void modulus(int a, int b){
-        if(a == 0){
-            int c = 0;
-            System.out.printf("%d %% %d = %d%n", a, b, c);
-        } else if (b == 0){
-            int c = a;
-            System.out.printf("%d %% %d = %d%n", a, b, c);
-        } else {
-            int c = a % b;
-            System.out.printf("%d %% %d = %d%n", a, b, c);
+    public static long calculateFactorial(int num) {
+        int output = 1;
+        for (int i = 1; i <= num; i += 1) {
+            output *= i;
         }
+        return output;
+    }
+
+    public static void userInteractionFactorial(Scanner sc) {
+        boolean willContinue;
+        String userChoice;
+        do {
+            System.out.println("Please enter an integer from 1 to 12");
+            int userInt = getInteger(1, 12);
+            System.out.println(calculateFactorial(userInt));
+            do {
+                System.out.println("Do you wish to continue? [y/n]: ");
+                userChoice = sc.next().trim();
+            } while (!userChoice.equalsIgnoreCase("y") & !userChoice.equalsIgnoreCase("n"));
+
+            willContinue = userChoice.equalsIgnoreCase("y");
+        } while (willContinue);
+    }
+
+    public static int randomWithRange(int min, int max)
+    {
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
+    }
+
+    public static void rollDiceGame(Scanner sc) {
+        String userChoice;
+        System.out.print("Please enter the number of sides for the dice: ");
+        int nSides = getInteger(1, 20);
+        do {
+            System.out.println("You have rolled a " + randomWithRange(1, nSides) + " and a " + randomWithRange(1, nSides));
+            do {
+                System.out.println("Would you like to roll again? [y/n]");
+                userChoice = sc.next().trim();
+            } while (!userChoice.equalsIgnoreCase("y") & !userChoice.equalsIgnoreCase("n"));
+
+        } while (!userChoice.equals("n"));
     }
 
     public static void main(String[] args){
@@ -62,13 +102,16 @@ public class MethodsExercises {
         Scanner sc = new Scanner(System.in);
         int a = 10;
         int b = 20;
-        add(a, b);
-        subtract(a, b);
-        multiply(a, b);
-        divide(a, b);
-        modulus(a, b);
-        System.out.println(mult(a, b));
-
+        int c = 0;
+        System.out.println(add(a, b));
+        System.out.println(subtract(a, b));
+        System.out.println(multiply(a, b));
+        System.out.println(divide(a, b));
+        System.out.println(modulus(a, b));
+        System.out.println(multiplyWithLoop(a, b));
+        multiplyRecursion(a, b, c);
+        System.out.print("Enter a number between 1 and 10: ");
+        int userInput = getInteger(1, 10);
     }
 
 }
