@@ -4,8 +4,12 @@ import java.util.Scanner;
 
 public class Input {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
     private static int circlesMade = 0;
+
+    public Input(){
+         scanner = new Scanner(System.in);
+    }
 
     public static void setCirclesMade(Input input, int number){
         input.circlesMade += number;
@@ -25,9 +29,11 @@ public class Input {
     }
 
     public boolean yesNo(){
-        if(scanner.next().equalsIgnoreCase("yes")){
+        String yesNo = scanner.next();
+        if(yesNo.equalsIgnoreCase("yes")){
             return true;
-        }else if(scanner.next().equalsIgnoreCase("y")){
+        }
+        if(yesNo.equalsIgnoreCase("y")){
             return true;
         }
         return false;
@@ -35,13 +41,7 @@ public class Input {
 
     public boolean yesNo(String prompt){
         System.out.println(prompt);
-        if(scanner.nextLine().equalsIgnoreCase("yes")){
-            return true;
-        }
-        if(scanner.nextLine().equalsIgnoreCase("y")){
-            return true;
-        }
-        return false;
+        return yesNo();
     }
 
     public int getInt(int min, int max){
@@ -68,23 +68,23 @@ public class Input {
     }
 
     public int getInt(){
-        System.out.println("Enter a number.");
+        System.out.println("Enter an integer.");
         int userInt = scanner.nextInt();
         return userInt;
     }
 
     public int getInt(String prompt){
         System.out.println(prompt);
-        System.out.println("Enter a number.");
+        System.out.println("Enter an integer.");
         int userInt = scanner.nextInt();
         return userInt;
     }
 
     public double getDouble(double min, double max){
-        double userInt = getInt();
-        if (userInt >= min && userInt <= max) {
+        double userDouble = getDouble();
+        if (userDouble >= min && userDouble <= max) {
             System.out.println("Your input is between the min and max.");
-            return userInt;
+            return userDouble;
         } else {
             System.out.println("Your input is NOT between the min and max.");
             return getDouble(min, max);
@@ -93,10 +93,10 @@ public class Input {
 
     public double getDouble(double min, double max, String prompt){
         System.out.println(prompt);
-        double userInt = getInt();
-        if (userInt >= min && userInt <= max) {
+        double userDouble = getDouble();
+        if (userDouble >= min && userDouble <= max) {
             System.out.println("Your input is between the min and max.");
-            return userInt;
+            return userDouble;
         } else {
             System.out.println("Your input is NOT between the min and max.");
             return getDouble(min, max);
@@ -105,15 +105,15 @@ public class Input {
 
     public double getDouble(){
         System.out.println("Enter a number with decimals.");
-        double userInt = scanner.nextDouble();
-        return userInt;
+        double userDouble = scanner.nextDouble();
+        return userDouble;
     }
 
     public double getDouble(String prompt){
         System.out.println(prompt);
         System.out.println("Enter a number.");
-        double userInt = scanner.nextDouble();
-        return userInt;
+        double userDouble = scanner.nextDouble();
+        return userDouble;
     }
 
 

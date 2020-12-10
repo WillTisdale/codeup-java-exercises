@@ -22,7 +22,7 @@ public class CircleApp {
     public static void main(String[] args){
         Input input = new Input();
         circleCreator(input);
-//        System.out.println(input.yesNo(input.prompt));
+
 
     }
 
