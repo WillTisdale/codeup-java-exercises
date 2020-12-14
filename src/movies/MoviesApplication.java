@@ -2,7 +2,6 @@ package movies;
 
 import util.Input;
 
-
 public class MoviesApplication {
 
     public static Input input = new Input();
@@ -63,8 +62,6 @@ public class MoviesApplication {
     public static void main(String[] args){
         System.out.println("What would you like to do?");
         userOptions();
-
-
     }
 
 }
