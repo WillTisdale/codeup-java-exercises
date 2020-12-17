@@ -1,16 +1,15 @@
 package grades;
 
+import util.Input;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class GradesApplication {
 
-
-
-
-
     public static void main(String[] args) {
+        Input input = new Input();
         Scanner sc = new Scanner(System.in);
         HashMap<String, Student> students = new HashMap<>();
 
@@ -43,14 +42,25 @@ public class GradesApplication {
             System.out.printf("|%s|  ", name);
         }
         System.out.println();
-        public static void runApplication(){
-            System.out.println("What student would you like to see more information on?");
+        boolean yesNo = true;
+        do {
             System.out.println();
+            System.out.println("What student would you like to see more information on?");
             String userSelection = sc.nextLine();
-            if(students.containsValue(userSelection)){
-                System.out.print();
+            if (students.containsKey(userSelection)) {
+                String name = students.get(userSelection).getName();
+                double average = students.get(userSelection).getGradeAverage();
+                System.out.println();
+                System.out.printf("Name: %s - GitHub Username: %s%n%nCurrent Average: %.1f", name, userSelection, average );
+            } else {
+                System.out.printf("Sorry, no student found with the GitHub username of %s", userSelection);
             }
-        }
+            System.out.println();
+            System.out.println("Would you like to see another student?");
+            yesNo = input.yesNo();
+        } while (yesNo);
+        System.out.println("Goodbye, and have a wonderful day!");
+
 
 
 

@@ -20,12 +20,12 @@ public class Input {
     }
 
     public String getString(){
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     public String getString(String prompt){
         System.out.println(prompt);
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     public boolean yesNo(){
