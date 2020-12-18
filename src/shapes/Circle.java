@@ -7,10 +7,10 @@ public class Circle {
     private double circumference;
 
     public Circle(double radius){
-        this.radius = radius;
-        System.out.printf("Radius: %.2f%n", this.radius);
-        getArea();
-        getCircumference();
+            this.radius = radius;
+            System.out.printf("Radius: %.2f%n", this.radius);
+            getArea();
+            getCircumference();
     }
 
     public double getArea(){

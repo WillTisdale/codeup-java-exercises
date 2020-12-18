@@ -1,5 +1,7 @@
 package util;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class Input {
@@ -68,18 +70,22 @@ public class Input {
     }
 
     public int getInt(){
-        int userInt = scanner.nextInt();
-        return userInt;
+        try{
+            return Integer.valueOf(getString());
+        } catch(NumberFormatException e){
+            return getInt("Your input is invalid. Try again.");
+        } catch(Exception e){
+            e.printStackTrace();
+            return getInt("Your input is invalid. Try again.");
+        }
     }
 
     public int getInt(String prompt){
         System.out.println(prompt);
-        System.out.println("Enter an integer.");
-        int userInt = scanner.nextInt();
-        return userInt;
+        return getInt();
     }
 
-    public double getDouble(double min, double max){
+    public double getDouble(double min, double max) throws Exception {
         double userDouble = getDouble();
         if (userDouble >= min && userDouble <= max) {
             System.out.println("Your input is between the min and max.");
@@ -90,7 +96,7 @@ public class Input {
         }
     }
 
-    public double getDouble(double min, double max, String prompt){
+    public double getDouble(double min, double max, String prompt) throws Exception {
         System.out.println(prompt);
         double userDouble = getDouble();
         if (userDouble >= min && userDouble <= max) {
@@ -102,17 +108,20 @@ public class Input {
         }
     }
 
-    public double getDouble(){
-        System.out.println("Enter a number with decimals.");
-        double userDouble = scanner.nextDouble();
-        return userDouble;
+    public double getDouble() {
+        try{
+            return Double.valueOf(getString());
+        } catch (NumberFormatException e){
+            return getDouble("Your entry is not valid. Try again.");
+        } catch(Exception e){
+            e.printStackTrace();
+            return getDouble("Your input is invalid. Try again.");
+        }
     }
 
-    public double getDouble(String prompt){
+    public double getDouble(String prompt) {
         System.out.println(prompt);
-        System.out.println("Enter a number.");
-        double userDouble = scanner.nextDouble();
-        return userDouble;
+        return getDouble();
     }
 
 
