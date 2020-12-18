@@ -17,13 +17,9 @@ public class CircleApp {
         }while(makeCircle);
     }
 
-
-
     public static void main(String[] args){
         Input input = new Input();
         circleCreator(input);
-
-
     }
 
 

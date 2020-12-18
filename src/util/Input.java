@@ -75,7 +75,7 @@ public class Input {
         } catch(NumberFormatException e){
             return getInt("Your input is invalid. Try again.");
         } catch(Exception e){
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return getInt("Your input is invalid. Try again.");
         }
     }
@@ -114,7 +114,7 @@ public class Input {
         } catch (NumberFormatException e){
             return getDouble("Your entry is not valid. Try again.");
         } catch(Exception e){
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             return getDouble("Your input is invalid. Try again.");
         }
     }
@@ -124,6 +124,17 @@ public class Input {
         return getDouble();
     }
 
+    public void getBinary(){
+        String binary = getString("Enter a binary number");
+        int decimal = Integer.parseInt(binary,2);
+        System.out.println("Your number is " + decimal);
+    }
+
+    public void getHex(){
+        String hex = getString("Enter a hexadecimal number");
+        int decimal = Integer.parseInt(hex,16);
+        System.out.println("Your number is " + decimal);
+    }
 
 
 }
